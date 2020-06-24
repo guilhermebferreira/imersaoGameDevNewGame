@@ -28,7 +28,7 @@ this.anima();
   }
   anima(){
       this.frameAtual++;
-    if(this.frameAtual > 16){
+    if(this.frameAtual>= this.matriz.length){
       this.frameAtual = 0;
     }
   }
