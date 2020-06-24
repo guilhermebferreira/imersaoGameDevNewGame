@@ -1,36 +1,32 @@
-class Personagem{
-  constructor(image){
-    this.imagem = image;
-    this.matriz = [
-            [0, 0],
-            [220, 0],
-            [440, 0],
-            [660, 0],
-            [0, 270],
-            [220, 270],
-            [440, 270],
-            [660, 270],
-            [0, 540],
-            [220, 540],
-            [440, 540],
-            [660, 540],
-            [0, 810],
-            [220, 810],
-            [440, 810],
-            [660, 810],
-        ] 
-    this.frameAtual = 0;
+class Personagem extends Animacao{
+  
+  constructor(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite){
+    super(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite)
+    
+    this.gravidade = 10
+    this.velocidadePulo = 10
+    this.yBase = height - altura
+    this.y = this.yBase
+    
   }
   
   exibe(){
-      image(this.imagem,mouseX,height-150, 110, 135, this.matriz[this.frameAtual][0],this.matriz[this.frameAtual][1], 220,270);
-this.anima();
+      image(this.imagem,mouseX,this.y, this.largura, this.altura, this.matriz[this.frameAtual][0],this.matriz[this.frameAtual][1], this.larguraSprite,this.alturaSprite);
+  this.anima();
   }
-  anima(){
-      this.frameAtual++;
-    if(this.frameAtual>= this.matriz.length){
-      this.frameAtual = 0;
+  
+  pula(){
+   this.velocidadePulo = - 50
+  }
+  
+  aplicaGravidade(){
+    this.y = this.y + this.velocidadePulo
+    this.velocidadePulo = this.velocidadePulo + this.gravidade
+    
+    if(this.y > this.yBase){
+      this.y = this.yBase
     }
+      
   }
   
 }
