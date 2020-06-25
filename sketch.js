@@ -1,6 +1,7 @@
 let imagemCenario;
 let imagemPersonagem;
 let soundtrack;
+let soundPulo;
 const matrizInimigo = [
   [0, 0],
   [104, 0],
@@ -57,6 +58,7 @@ function preload() {
     imagemPersonagem = loadImage('imagens/personagem/correndo.png');
     imagemInimigo = loadImage('imagens/inimigos/gotinha.png');
     soundtrack = loadSound('sons/trilha_jogo.mp3');
+    soundPulo = loadSound('sons/somPulo.mp3');
 
 }
 
@@ -75,7 +77,24 @@ function setup() {
 function keyPressed(){
   if(key==='ArrowUp')  {
     personagem.pula();
+    soundPulo.play();
   }
+}
+
+function debug(){
+  
+    noFill()
+    const precisao = .7;
+    rect(
+      inimigo.x,
+      inimigo.y,
+      inimigo.largura * precisao,
+      inimigo.altura * precisao)
+    rect(
+      personagem.x, 
+      personagem.y, 
+      personagem.largura * precisao,
+      personagem.altura * precisao)
 }
 
 function draw() {
@@ -88,6 +107,8 @@ function draw() {
     inimigo.exibe();
     inimigo.move()
     circle(mouseX, mouseY, 50);
+  
+    debug();
   
     if(personagem.estaColidindo(inimigo)){
       console.log('Colidiu')

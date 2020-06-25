@@ -11,7 +11,8 @@ class Personagem extends Animacao{
   }
   
   exibe(){
-      image(this.imagem,mouseX,this.y, this.largura, this.altura, this.matriz[this.frameAtual][0],this.matriz[this.frameAtual][1], this.larguraSprite,this.alturaSprite);
+    this.x = mouseX;
+      image(this.imagem,this.x,this.y, this.largura, this.altura, this.matriz[this.frameAtual][0],this.matriz[this.frameAtual][1], this.larguraSprite,this.alturaSprite);
   this.anima();
   }
   
