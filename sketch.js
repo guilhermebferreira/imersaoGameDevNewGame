@@ -1,6 +1,7 @@
 let imagemCenario;
 let imagemPersonagem;
 let imagemInimigoGrande;
+let imagemInimigoVoador;
 let imagemGameOver;
 let soundtrack;
 let soundPulo;
@@ -111,7 +112,7 @@ function preload() {
     imagemPersonagem = loadImage('imagens/personagem/correndo.png');
     imagemInimigo = loadImage('imagens/inimigos/gotinha.png');
     imagemInimigoGrande = loadImage('imagens/inimigos/troll.png');
-    imagemVoador = loadImage('imagens/inimigos/gotinha-voadora.png');
+    imagemInimigoVoador = loadImage('imagens/inimigos/gotinha-voadora.png');
     soundtrack = loadSound('sons/trilha_jogo.mp3');
     soundPulo = loadSound('sons/somPulo.mp3');
 
@@ -123,8 +124,9 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     cenario = new Cenario(imagemCenario, 3);
     personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 0,110, 135, 220, 270);
-    inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 0,52, 52, 104, 104);
-    inimigoGrande = new Inimigo(matrizInimigoGrande, imagemInimigoGrande, width + 500, 0, 200,200,400,400);
+    inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 0,52, 52, 104, 104, 30,30);
+    inimigoGrande = new Inimigo(matrizInimigoGrande, imagemInimigoGrande, width + 50, 0, 200,200,400,400, 12, 400);
+    inimigoVoador = new Inimigo(matrizInimigoVoador, imagemInimigoVoador, 0,height -200, 100,75,200,150,30,40);
     frameRate(40);
 
     soundtrack.loop();
@@ -146,7 +148,8 @@ function debug() {
         inimigo.x,
         inimigo.y,
         inimigo.largura * precisao,
-        inimigo.altura * precisao)
+        inimigo.altura * precisao
+    );
     rect(
         personagem.x,
         personagem.y,
@@ -166,6 +169,9 @@ function draw() {
 
     inimigoGrande.exibe();
     inimigoGrande.move();
+
+    inimigoVoador.exibe();
+    inimigoVoador.move();
 
 
 
