@@ -9,7 +9,7 @@ class Jogo{
         const inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 0, 52, 52, 104, 104, 30, 30);
         const inimigoGrande = new Inimigo(matrizInimigoGrande, imagemInimigoGrande, width - 50, 0, 200, 200, 400, 400, 12, 50);
         const inimigoVoador = new Inimigo(matrizInimigoVoador, imagemInimigoVoador, 0, height - 200, 100, 75, 200, 150, 30, 40);
-
+        vida = new Vida(5,3);
         inimigos.push(inimigo);
         inimigos.push(inimigoGrande);
         inimigos.push(inimigoVoador);
@@ -38,6 +38,8 @@ class Jogo{
         personagem.exibe();
 
         personagem.aplicaGravidade();
+
+        vida.draw();
 
         circle(mouseX, mouseY, 50);
 
