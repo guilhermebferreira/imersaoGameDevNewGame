@@ -9,6 +9,8 @@ class Personagem extends Animacao {
         this.baseJump = height - altura - this.baseY;
         this.pulos = 0;
 
+        this.invencivel = false;
+
     }
 
     exibe() {
@@ -35,7 +37,19 @@ class Personagem extends Animacao {
 
     }
 
+    ficaInvensivel(){
+        this.invencivel = true;
+        setTimeout(()=>{
+            this.invencivel = false;
+        }, 1000);
+    }
+
     estaColidindo(inimigo) {
+
+        if(this.invencivel){
+            return false;
+        }
+
         const precisao = .7;
         const colisao = collideRectRect(
             this.x,

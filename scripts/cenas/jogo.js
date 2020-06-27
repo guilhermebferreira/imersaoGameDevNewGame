@@ -62,8 +62,14 @@ class Jogo{
 
         if (personagem.estaColidindo(inimigo)) {
             console.log('Colidiu');
-            image(imagemGameOver, width / 4, height / 4, width / 2, height / 2);
-            noLoop()
+            vida.perdeVida();
+            personagem.ficaInvensivel();
+
+            if(vida.gameOver()){
+                vida.perdeVida();
+                image(imagemGameOver, width / 4, height / 4, width / 2, height / 2);
+                noLoop();
+            }
         }
 
     }
