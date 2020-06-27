@@ -17,6 +17,7 @@ let cenario;
 let personagem;
 
 let vida;
+let cartucho ={};
 
 let botaoGerenciador;
 

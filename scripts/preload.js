@@ -8,6 +8,8 @@ function preload() {
     imagemInimigoVoador = loadImage('imagens/inimigos/gotinha-voadora.png');
     imagemCoracao = loadImage('imagens/assets/coracao.png');
 
+    cartucho = loadJSON('cartucho/mapa.json');
+
     soundtrack = loadSound('sons/trilha_jogo.mp3');
     soundPulo = loadSound('sons/somPulo.mp3');
 

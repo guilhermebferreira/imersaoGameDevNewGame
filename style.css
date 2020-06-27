@@ -3,10 +3,13 @@
 html, body {
   margin: 0;
   padding: 0;
+  /*para que a pagina não dê scroll, após o personagem pular*/
+  height: 100%; overflow: hidden;
 }
 canvas {
   display: block;
 }
+
 
 .botao-tela-inicial {
   font-family: 'Luckiest Guy', cursive;

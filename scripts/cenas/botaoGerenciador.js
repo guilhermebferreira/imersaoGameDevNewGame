@@ -16,7 +16,7 @@ class BotaoGerenciador{
     }
 
     _alteraCena(cena){
-        this.botao.remove();
+        this.botao.hide();
         cenaAtual = cena;
     }
 }
