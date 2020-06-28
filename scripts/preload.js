@@ -15,4 +15,13 @@ function preload() {
 
     fonteTelaInicial = loadFont('imagens/assets/fonteTelaInicial.otf');
 
+    cenario_1_sky = loadImage('imagens/cenario/floresta/sky.png');
+    cenario_1_clouds_1 = loadImage('imagens/cenario/floresta/clouds_1.png');
+    cenario_1_clouds_2 = loadImage('imagens/cenario/floresta/clouds_2.png');
+    cenario_1_rocks =    loadImage('imagens/cenario/floresta/pixel/sprite_3.png');
+    cenario_1_ground_1 = loadImage('imagens/cenario/floresta/pixel/sprite_0.png');
+    cenario_1_ground_2 = loadImage('imagens/cenario/floresta/pixel/sprite_1.png');
+    cenario_1_ground_3 = loadImage('imagens/cenario/floresta/pixel/sprite_2.png');
+    cenario_1_plants = loadImage('imagens/cenario/floresta/plant.png');
+
 }

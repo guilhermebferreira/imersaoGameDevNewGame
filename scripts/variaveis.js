@@ -42,3 +42,13 @@ const matrizPersonagem = {
         onState: [18, 19, 20],
     },
 };
+
+
+let cenario_1_sky;
+let cenario_1_clouds_1;
+let cenario_1_clouds_2;
+let cenario_1_rocks;
+let cenario_1_ground_1;
+let cenario_1_ground_2;
+let cenario_1_ground_3;
+let cenario_1_plants;
