@@ -1,7 +1,7 @@
 class Personagem extends Animacao {
 
-    constructor(matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite) {
-        super(matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite);
+    constructor( imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, limite) {
+        super( imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, limite);
 
         this.gravidade = 6;
         this.velocidadePulo = 0;
@@ -15,7 +15,7 @@ class Personagem extends Animacao {
 
     exibe() {
         this.x = mouseX;
-        image(this.imagem, this.x, this.y, this.largura, this.altura, this.matriz[this.frameAtual][0], this.matriz[this.frameAtual][1], this.larguraSprite, this.alturaSprite);
+        image(this.imagem, this.x, this.y, this.largura, this.altura, this.getFaramePositionX(), this.getFaramePositionY(), this.larguraSprite, this.alturaSprite);
         this.anima();
     }
 

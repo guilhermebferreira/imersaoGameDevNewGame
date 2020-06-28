@@ -15,6 +15,14 @@
     {
       "inimigo": 2,
       "velocidade": 40
+    },
+    {
+      "inimigo": 1,
+      "velocidade": 40
+    },
+    {
+      "inimigo": 2,
+      "velocidade": 50
     }
   ],
   "configuracao": {

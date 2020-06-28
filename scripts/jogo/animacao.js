@@ -1,9 +1,12 @@
 class Animacao {
-    constructor(matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite) {
+    constructor(imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, limite) {
 
         this.baseY = 30;
 
-        this.matriz = matriz;
+        this.linhas = parseInt( imagem.height / alturaSprite);
+        this.colunas = parseInt( imagem.width / larguraSprite);
+
+        // this.matriz = matriz;
         this.imagem = imagem;
         this.largura = largura;
         this.altura = altura;
@@ -14,6 +17,16 @@ class Animacao {
         this.alturaSprite = alturaSprite;
 
         this.frameAtual = 0;
+        this.limite = limite;
+    }
+
+
+    //essas formulas substitue a matriz do personagem
+    getFaramePositionX(){
+        return parseInt((this.frameAtual%this.colunas) * this.larguraSprite);
+    }
+    getFaramePositionY(){
+        return parseInt(this.frameAtual/this.colunas) * this.alturaSprite;
     }
 
     exibe() {
@@ -23,8 +36,8 @@ class Animacao {
             this.y,
             this.largura,
             this.altura,
-            this.matriz[this.frameAtual][0],
-            this.matriz[this.frameAtual][1],
+            this.getFaramePositionX(),
+            this.getFaramePositionY(),
             this.larguraSprite,
             this.alturaSprite
         );
@@ -34,7 +47,7 @@ class Animacao {
     anima() {
 
         this.frameAtual++;
-        if (this.frameAtual >= this.matriz.length) {
+        if (this.frameAtual >= this.limite) {
             this.frameAtual = 0;
         }
     }
