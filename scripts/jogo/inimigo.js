@@ -1,12 +1,12 @@
 class Inimigo extends Animacao {
 
-    constructor( imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite,  limite) {
+    constructor(imagem, x, variacaoY, largura, altura, linhas, colunas, limite) {
         const velocidadeDefault = 30;
 
-        super( imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, limite);
+        super(imagem, x, variacaoY, largura, altura, linhas, colunas, limite);
 
         this.velocidade = velocidadeDefault;
-        this.x = width ;
+        this.x = width;
 
     }
 
@@ -15,7 +15,7 @@ class Inimigo extends Animacao {
         this.x = this.x - this.velocidade;
     }
 
-    aparece(){
+    aparece() {
         this.x = width;
     }
 

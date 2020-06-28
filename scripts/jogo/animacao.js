@@ -1,10 +1,15 @@
 class Animacao {
-    constructor(imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, limite) {
+    constructor(imagem, x, variacaoY, largura, altura, linhas, colunas, limite) {
 
         this.baseY = 30;
 
-        this.linhas = parseInt( imagem.height / alturaSprite);
-        this.colunas = parseInt( imagem.width / larguraSprite);
+        // this.linhas = parseInt( imagem.height / alturaSprite);
+        // this.colunas = parseInt( imagem.width / larguraSprite);
+        this.linhas = linhas;
+        this.colunas = colunas;
+
+        this.alturaSprite = parseInt(imagem.height / linhas);
+        this.larguraSprite = parseInt(imagem.width / colunas);
 
         // this.matriz = matriz;
         this.imagem = imagem;
@@ -13,8 +18,8 @@ class Animacao {
         this.x = x;
         this.variacaoY = variacaoY;
         this.y = height - this.altura - this.variacaoY - this.baseY;
-        this.larguraSprite = larguraSprite;
-        this.alturaSprite = alturaSprite;
+        // this.larguraSprite = larguraSprite;
+        // this.alturaSprite = alturaSprite;
 
         this.frameAtual = 0;
         this.limite = limite;
