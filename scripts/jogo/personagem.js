@@ -34,6 +34,9 @@ class Personagem {
         this.baseJump = height - altura - this.baseY;
         this.pulos = 0;
 
+        this.velocidade = 0;
+        this.velocidadeMax = 50;
+
         this.invencivel = false;
 
         this.enteringState = true;
@@ -43,8 +46,13 @@ class Personagem {
 
     }
 
+    getVelocidade() {
 
-//essas formulas substitue a matriz do personagem
+        console.log(this.velocidade);
+        return this.velocidade;
+    }
+
+    //essas formulas substitue a matriz do personagem
     getFaramePositionX() {
         return parseInt((this.frameAtual % this.colunas) * this.larguraSprite);
     }
@@ -57,6 +65,26 @@ class Personagem {
         this.x = mouseX;
         image(this.imagem, this.x, this.y, this.largura, this.altura, this.getFaramePositionX(), this.getFaramePositionY(), this.larguraSprite, this.alturaSprite);
         this.anima();
+    }
+
+    corre() {
+        if (this.velocidade < this.velocidadeMax) {
+            this.velocidade += 8;
+        }
+
+
+    }
+
+    para() {
+        if (this.velocidade > 0) {
+            this.velocidade -= 8;
+        } else {
+            this.velocidade = 0;
+        }
+    }
+
+    paraImediatamente() {
+        this.velocidade = 0;
     }
 
     pula() {
@@ -77,7 +105,7 @@ class Personagem {
             this.y = this.baseJump;
             this.pulos = 0;
 
-            this.setState('idle');
+            this.checkState();
         }
 
     }
@@ -87,6 +115,16 @@ class Personagem {
         setTimeout(() => {
             this.invencivel = false;
         }, 1000);
+    }
+
+    checkState() {
+        if (this.velocidade > 0 && this.pulos == 0) {
+            this.setState('running');
+        }
+        if (this.velocidade == 0 && this.pulos == 0) {
+            this.setState('idle');
+        }
+
     }
 
     estaColidindo(inimigo) {
@@ -110,20 +148,22 @@ class Personagem {
         return colisao;
 
     }
-    setState(state){
-        if(this.state!=state){
 
+    setState(state) {
+        if (this.state != state) {
+            console.log('enter:', this.state);
             this.state = state;
             this.enterState();
         }
     }
+
     getState() {
-        console.log(this.state);
+        console.log('state', this.state);
+        console.log('frameAtual', this.frameAtual);
         return this.state;
     }
 
     enterState() {
-        console.log('enterState');
         this.enteringState = true;
         this.frameIndice = 0;
         this.frameAtual = this.matrizAnimacao[this.getState()].enterState[this.frameIndice];
@@ -131,15 +171,21 @@ class Personagem {
     }
 
     exibe() {
-        let direction = -1;
+        //depois testar isso aqui
+        //let direction = -1;
 
-        translate(this.largura , 0);
-        scale(direction, 1);
+        // translate(this.x , 0);
+        // scale(direction, 1);
+
+
+        this.checkState();
+
+
         image(
             this.imagem,
-            this.x ,
+            this.x,
             this.y,
-            this.largura ,
+            this.largura,
             this.altura,
             this.getFaramePositionX(),
             this.getFaramePositionY(),
@@ -148,32 +194,29 @@ class Personagem {
         );
 
 
-        translate(this.altura , 0);
-        scale(direction, 1);
-
         this.anima();
     }
 
     anima() {
+
+
         this.frameIndice++;
         if (this.frameIndice >= this.limite) {
             this.frameIndice = 0;
-            if(this.enteringState){
+            if (this.enteringState) {
                 this.enteringState = false;
                 this.frameAtual = this.matrizAnimacao[this.getState()].onState[this.frameIndice];
                 this.limite = this.matrizAnimacao[this.getState()].onState.length;
             }
         }
 
-        if(this.enteringState){
+        if (this.enteringState) {
 
             this.frameAtual = this.matrizAnimacao[this.getState()].enterState[this.frameIndice];
-        }else{
+        } else {
 
             this.frameAtual = this.matrizAnimacao[this.getState()].onState[this.frameIndice];
         }
-        console.log('limite',this.limite );
-        console.log('frameAtual',this.frameAtual );
     }
 
 }

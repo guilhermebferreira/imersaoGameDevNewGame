@@ -6,9 +6,8 @@ class Layer extends Cenario{
 
 
     move(velocidade) {
-        const direction = 1;
-        this.x1 = this.x1 - (velocidade*direction);
-        this.x2 = this.x2 - (velocidade*direction);
+        this.x1 = this.x1 - (velocidade);
+        this.x2 = this.x2 - (velocidade);
 
         if (this.x1 < -width) {
             this.x1 = width;
@@ -17,6 +16,17 @@ class Layer extends Cenario{
         if (this.x2 < -width) {
             this.x2 = width;
         }
+
+        //correção, devido aos calculos quebrados do paralax
+        if(this.x1 < 0 &&  this.x1 > -width){
+            this.x2 = width + this.x1;
+        }
+
+        if(this.x2 < 0 &&  this.x2 > -width){
+            this.x1 = width + this.x2;
+        }
+
+
 
     }
 

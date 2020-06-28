@@ -15,7 +15,7 @@ class Jogo {
         inimigos.push(inimigoGrande);
         inimigos.push(inimigoVoador);
 
-        cenario = new Paralax(cenario_1_sky,cenario_1_clouds_1, cenario_1_clouds_2,cenario_1_rocks,cenario_1_ground_1,cenario_1_ground_2,cenario_1_ground_2,cenario_1_plants);
+        cenario = new Paralax(cenario_1_sky,cenario_1_clouds_1, cenario_1_clouds_2,cenario_1_rocks,cenario_1_ground_3,cenario_1_ground_2,cenario_1_ground_1,cenario_1_plants);
 
 
         pontuacao = new Pontuacao();
@@ -25,6 +25,9 @@ class Jogo {
 
     keyPressed(key) {
         console.log(key);
+        if(key === 'ArrowLeft'){
+            personagem.paraImediatamente();
+        }
         if (key === 'ArrowUp' || key === ' ') {
             personagem.pula();
             soundPulo.play();
@@ -33,11 +36,17 @@ class Jogo {
 
     draw() {
 
+        if(keyIsDown(RIGHT_ARROW)){
+            personagem.corre();
+        }else{
+            personagem.para();
+        }
+
         cenario.exibe();
-        cenario.move(10);
+        cenario.move(personagem.getVelocidade());
 
         pontuacao.exibe();
-        pontuacao.adicionarPonto();
+        pontuacao.adicionarPonto(personagem.getVelocidade());
 
         personagem.exibe();
         personagem.aplicaGravidade();
@@ -45,7 +54,7 @@ class Jogo {
         vida.draw();
         circle(mouseX, mouseY, 50);
 
-        debug();
+        //debug();
 
         const linhaAtual = this.mapa[this.indice];
         const inimigo = inimigos[linhaAtual.inimigo];

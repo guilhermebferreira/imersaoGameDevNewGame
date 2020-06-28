@@ -17,13 +17,14 @@ class Paralax {
 
     move(velocidade) {
 
-        this.clouds_1.move(velocidade/6);
-        this.clouds_2.move(velocidade/5);
-        this.background_1.move(velocidade/4);
-        this.background_2.move(velocidade/3);
-        this.background_3.move(velocidade/2);
+        this.clouds_1.move(parseInt(velocidade/8));
+        this.clouds_2.move(parseInt(velocidade/4));
+        this.background_1.move(parseInt(velocidade/8));
+        this.background_2.move(parseInt(velocidade/4));
+        this.background_3.move(parseInt(velocidade/2));
+
         this.background_4.move(velocidade);
-        this.decoration.move(velocidade*1.5);
+        this.decoration.move(parseInt(velocidade*2));
 
     }
 
