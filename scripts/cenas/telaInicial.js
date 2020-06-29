@@ -1,12 +1,13 @@
 class TelaInicial {
     constructor() {
-
+        this.help = new Fala();
     }
 
     draw() {
         this._imagemDeFundo();
         this._texto();
         this._botao();
+        this._help();
     }
 
     _imagemDeFundo(){
@@ -25,5 +26,9 @@ class TelaInicial {
 
     _botao(){
         botaoGerenciador.draw();
+    }
+
+    _help(){
+        this.help.help();
     }
 }
