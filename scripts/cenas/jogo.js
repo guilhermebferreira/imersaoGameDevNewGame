@@ -3,6 +3,8 @@ class Jogo {
         this.indice = 0;
         this.mapa = cartucho.mapa;
         this.fim = false;
+
+        this.texto = new Fala();
     }
 
     setup() {
@@ -17,7 +19,7 @@ class Jogo {
 
         botaoReiniciar = new BotaoReiniciar('Tentar novamente', width / 2, height / 7 * 5);
 
-        texto = new Fala();
+
 
         magic = new Item(imagemMagica, width / 2 - 25, height / 2, 2 * 96, 2 * 76, 4, 5, 20);
         vida = new Vida(cartucho.configuracao.vidaInicial, cartucho.configuracao.vidaMaxima);
@@ -63,19 +65,19 @@ class Jogo {
         pontuacao.adicionarPonto(personagem.getVelocidade());
 
         if (this.fim) {
-            texto.setTexto('Minha busca terminou!', true);
+            this.texto.setTexto('Minha busca terminou!', true);
             magic.exibe();
         } else if (pontuacao.getPontos() > 100) {
-            texto.setTexto('Minha unica escolha, seguir em frente');
+            this.texto.setTexto('Minha unica escolha, seguir em frente');
         } else if (pontuacao.getPontos() > 80) {
-            texto.setTexto('Esta em algum lugar nessa floresta');
+            this.texto.setTexto('Esta em algum lugar nessa floresta');
         } else if (pontuacao.getPontos() > 60) {
-            texto.setTexto('Unica forma de restaurar o equilibrio');
+            this.texto.setTexto('Unica forma de restaurar o equilibrio');
         } else if (pontuacao.getPontos() > 10) {
-            texto.setTexto('Preciso encontrar a fonte de poder...');
+            this.texto.setTexto('Preciso encontrar a fonte de poder...');
         }
 
-        texto.exibe();
+        this.texto.exibe();
 
         personagem.exibe();
         personagem.aplicaGravidade();

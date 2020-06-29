@@ -18,7 +18,6 @@ let imagemHipsta;
 let cenario;
 let personagem;
 let magic;
-let texto;
 
 let vida;
 let cartucho = {};
