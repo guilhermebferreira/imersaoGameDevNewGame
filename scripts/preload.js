@@ -1,12 +1,14 @@
 function preload() {
     imagemTelaInicial = loadImage('imagens/assets/telaInicial.png');
     imagemCenario = loadImage('imagens/cenario/floresta.png');
-    imagemGameOver = loadImage('imagens/assets/gameover.png');
+    imagemGameOver = loadImage('imagens/assets/game-over.png');
     imagemPersonagem = loadImage('imagens/personagem/personagem.png');
     imagemInimigo = loadImage('imagens/inimigos/pixel/gotinha.png');
     imagemInimigoGrande = loadImage('imagens/inimigos/pixel/troll.png');
     imagemInimigoVoador = loadImage('imagens/inimigos/pixel/gotinha-voadora.png');
     imagemCoracao = loadImage('imagens/assets/coracao.png');
+    imagemMagica = loadImage('imagens/personagem/magic.png');
+    imagemHipsta = loadImage('imagens/assets/hipsta.png');
 
     cartucho = loadJSON('cartucho/mapa.json');
 

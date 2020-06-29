@@ -12,14 +12,19 @@ let imagemGameOver;
 let imagemTelaInicial;
 let fonteTelaInicial;
 let imagemCoracao;
+let imagemMagica;
+let imagemHipsta;
 
 let cenario;
 let personagem;
+let magic;
+let texto;
 
 let vida;
 let cartucho = {};
 
 let botaoGerenciador;
+let botaoReiniciar;
 
 
 let pontuacao;

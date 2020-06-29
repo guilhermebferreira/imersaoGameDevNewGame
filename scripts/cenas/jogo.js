@@ -2,6 +2,7 @@ class Jogo {
     constructor() {
         this.indice = 0;
         this.mapa = cartucho.mapa;
+        this.fim = false;
     }
 
     setup() {
@@ -9,7 +10,14 @@ class Jogo {
         personagem = new Personagem(imagemPersonagem, 100, 0, 111, 150, 11, 7, 72, matrizPersonagem);
         const inimigo = new Inimigo(imagemInimigo, width - 52, 0, 52, 52, 7, 4, 28);
         const inimigoGrande = new Inimigo(imagemInimigoGrande, width - 50, 0, 200, 200, 6, 5, 28);
-        const inimigoVoador = new Inimigo(imagemInimigoVoador, 0, height - 200, 100, 75, 6, 3, 16);
+        const inimigoVoador = new Inimigo(imagemInimigoVoador, 0, height - 150, 100, 75, 6, 3, 16);
+
+
+        botaoReiniciar = new BotaoReiniciar('Tentar novamente', width/2,height/7*5);
+
+        texto = new Fala();
+
+        magic = new Item(imagemMagica, width/2-25,height/2,2*96, 2*76,4,5,20);
         vida = new Vida(cartucho.configuracao.vidaInicial, cartucho.configuracao.vidaMaxima);
         inimigos.push(inimigo);
         inimigos.push(inimigoGrande);
@@ -36,7 +44,9 @@ class Jogo {
 
     draw() {
 
-        if(keyIsDown(RIGHT_ARROW)){
+        this.fim = pontuacao.acabou();
+
+        if(keyIsDown(RIGHT_ARROW) && !this.fim ){
             personagem.corre();
         }else{
             personagem.para();
@@ -47,12 +57,24 @@ class Jogo {
 
         pontuacao.exibe();
         pontuacao.adicionarPonto(personagem.getVelocidade());
+        if(pontuacao.getPontos() > 150){
+            texto.setTexto('Minha unica escolha, seguir em frente');
+        }else if(pontuacao.getPontos() > 100){
+            texto.setTexto('Esta em algum lugar nessa floresta');
+        }else if(pontuacao.getPontos() > 60){
+            texto.setTexto('Unica forma de restaurar o equilibrio');
+        }else if(pontuacao.getPontos() > 10){
+            texto.setTexto('Preciso encontrar a fonte de poder...');
+        }
+
+        texto.exibe();
 
         personagem.exibe();
         personagem.aplicaGravidade();
 
         vida.draw();
-        circle(mouseX, mouseY, 50);
+        //exibe mouse
+        // circle(mouseX, mouseY, 50);
 
         //debug();
 
@@ -60,12 +82,12 @@ class Jogo {
         const inimigo = inimigos[linhaAtual.inimigo];
         const inimigoVisivel = inimigo.x < -inimigo.largura;
 
-        inimigo.velocidade = linhaAtual.velocidade;
+        inimigo.velocidade = linhaAtual.velocidade + personagem.getVelocidade();
 
         inimigo.exibe();
         inimigo.move();
 
-        if (inimigoVisivel) {
+        if (inimigoVisivel &&  !this.fim ) {
             this.indice++;
             inimigo.aparece();
             if (this.indice > this.mapa.length - 1) {
@@ -74,16 +96,24 @@ class Jogo {
         }
 
         if (personagem.estaColidindo(inimigo)) {
-            console.log('Colidiu');
+            texto.cuidado();
             vida.perdeVida();
             personagem.ficaInvensivel();
 
             if (vida.gameOver()) {
                 vida.perdeVida();
-                image(imagemGameOver, width / 4, height / 4, width / 2, height / 2);
+                botaoReiniciar.draw();
+                image(imagemGameOver, width / 4, height / 3, width / 2, height / 4);
                 noLoop();
             }
         }
+
+
+        if(this.fim){
+            texto.setTexto('Minha busca terminou!');
+            magic.exibe();
+        }
+
 
     }
 }

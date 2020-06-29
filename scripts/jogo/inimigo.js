@@ -7,12 +7,20 @@ class Inimigo extends Animacao {
 
         this.velocidade = velocidadeDefault;
         this.x = width;
+        this.delay = 0;
 
     }
 
+    aparece(){
+        this.x = width;
+    }
+
+    setDelay(delay){
+        this.delay = delay;
+    }
 
     move() {
-        this.x = this.x - this.velocidade;
+        this.x = this.x - this.velocidade +this.delay ;
     }
 
     aparece() {

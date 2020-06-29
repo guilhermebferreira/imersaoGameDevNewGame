@@ -4,7 +4,7 @@ function setup() {
     jogo = new Jogo();
     telaInicial = new TelaInicial();
     jogo.setup();
-    cenaAtual = 'jogo';
+    cenaAtual = 'telaInicial';
 
     botaoGerenciador = new BotaoGerenciador('Iniciar', width/2,height/7*4);
 

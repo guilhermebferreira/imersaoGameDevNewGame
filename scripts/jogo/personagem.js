@@ -47,8 +47,6 @@ class Personagem {
     }
 
     getVelocidade() {
-
-        console.log(this.velocidade);
         return this.velocidade;
     }
 
@@ -151,15 +149,12 @@ class Personagem {
 
     setState(state) {
         if (this.state != state) {
-            console.log('enter:', this.state);
             this.state = state;
             this.enterState();
         }
     }
 
     getState() {
-        console.log('state', this.state);
-        console.log('frameAtual', this.frameAtual);
         return this.state;
     }
 

@@ -1,5 +1,5 @@
 class Vida {
-    constructor(max, inicial) {
+    constructor(inicial, max) {
         this.max = max;
         this.inicial = inicial;
         this.quantidade = this.inicial;
