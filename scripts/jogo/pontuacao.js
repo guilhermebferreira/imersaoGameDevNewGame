@@ -21,7 +21,7 @@ class Pontuacao{
 
     acabou(){
         // return this.pontos > 1000;
-        return this.pontos > 8000;
+        return this.pontos > 14000;
     }
 
 }

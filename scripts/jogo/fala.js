@@ -5,9 +5,11 @@ class Fala{
         this.contador = 0;
         this.exibeTexto = false;
         this.exibeCuidado = false;
+        this.exibeSempre = false;
     }
 
-    setTexto(texto){
+    setTexto(texto, sempre = false){
+        this.exibeSempre = sempre;
         if(this.texto!=texto){
             this.contador = 0;
             this.texto=texto
@@ -52,6 +54,14 @@ class Fala{
             fill('#fff');
             textSize(50);
             text('Cuidado!!!', width/4, height/4);
+        }else if(this.exibeSempre){
+
+            this.personagem();
+
+            textAlign(LEFT);
+            fill('#fff');
+            textSize(50);
+            text(this.texto , width/4, height/4);
         }
     }
 }

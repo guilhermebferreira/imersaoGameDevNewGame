@@ -57,9 +57,14 @@ class Jogo {
 
         pontuacao.exibe();
         pontuacao.adicionarPonto(personagem.getVelocidade());
-        if(pontuacao.getPontos() > 150){
+
+        if(this.fim){
+            texto.setTexto('Minha busca terminou!', true);
+            magic.exibe();
+        }
+        else if(pontuacao.getPontos() > 100){
             texto.setTexto('Minha unica escolha, seguir em frente');
-        }else if(pontuacao.getPontos() > 100){
+        }else if(pontuacao.getPontos() > 80){
             texto.setTexto('Esta em algum lugar nessa floresta');
         }else if(pontuacao.getPontos() > 60){
             texto.setTexto('Unica forma de restaurar o equilibrio');
@@ -95,7 +100,7 @@ class Jogo {
             }
         }
 
-        if (personagem.estaColidindo(inimigo)) {
+        if (personagem.estaColidindo(inimigo) &&  !this.fim ) {
             texto.cuidado();
             vida.perdeVida();
             personagem.ficaInvensivel();
@@ -111,11 +116,6 @@ class Jogo {
             }
         }
 
-
-        if(this.fim){
-            texto.setTexto('Minha busca terminou!');
-            magic.exibe();
-        }
 
 
     }
