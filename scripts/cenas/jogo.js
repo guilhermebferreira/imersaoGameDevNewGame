@@ -99,8 +99,11 @@ class Jogo {
             texto.cuidado();
             vida.perdeVida();
             personagem.ficaInvensivel();
+            soundHit.play();
 
             if (vida.gameOver()) {
+                soundtrack.stop();
+                soundRain.loop();
                 vida.perdeVida();
                 botaoReiniciar.draw();
                 image(imagemGameOver, width / 4, height / 3, width / 2, height / 4);

@@ -13,7 +13,9 @@ function preload() {
     cartucho = loadJSON('cartucho/mapa.json');
 
     soundtrack = loadSound('sons/trilha_jogo.mp3');
+    soundHit= loadSound('sons/breath.wav');
     soundPulo = loadSound('sons/somPulo.mp3');
+    soundRain = loadSound('sons/rain.mp3');
 
     fonteTelaInicial = loadFont('imagens/assets/fonteTelaInicial.otf');
 

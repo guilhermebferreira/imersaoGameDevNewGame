@@ -31,6 +31,8 @@ let pontuacao;
 
 let soundtrack;
 let soundPulo;
+let soundHit;
+let soundRain;
 let inimigos = [];
 
 const matrizPersonagem = {
