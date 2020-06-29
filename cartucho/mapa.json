@@ -9,11 +9,23 @@
       "velocidade": 30
     },
     {
+      "inimigo": 4,
+      "velocidade": 40
+    },
+    {
+      "inimigo": 3,
+      "velocidade": 60
+    },
+    {
       "inimigo": 1,
       "velocidade": 15
     },
     {
       "inimigo": 2,
+      "velocidade": 40
+    },
+    {
+      "inimigo": 3,
       "velocidade": 40
     },
     {
@@ -23,6 +35,10 @@
     {
       "inimigo": 2,
       "velocidade": 50
+    },
+    {
+      "inimigo": 4,
+      "velocidade": 40
     }
   ],
   "configuracao": {
