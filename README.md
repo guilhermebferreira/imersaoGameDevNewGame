@@ -23,6 +23,8 @@ O desenvolvimento do jogo foi feito usando exclusivamente a biblioteca javascrip
 
 O código base, desenvolvido durante o curso esta disponivel em [Imersão Game Dev](https://github.com/guilhermebferreira/imersaoGameDev)
 
+Mais detalhes sobre o curso organizado pela Alura no [site](https://www.alura.com.br/imersao-gamedev-javascript)
+
 # Posso jogar?
 
  [Acesse](https://guilhermebferreira.github.io/imersaoGameDevNewGame/)
